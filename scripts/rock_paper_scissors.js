@@ -43,17 +43,17 @@ for (let i = 0; i < 6; i++){
     }
     else if(playerSelection == 'rock' && computerSelection == 'paper'  || playerSelection =='paper' && computerSelection=='scissors'
     || playerSelection =='scissors' && computerSelection =='rock'){
-        computerScore = ++computerScore;
+        computerScore+=1;
         let loseDeclaration = 'You lose! ' + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + ' beats ' + playerSelection + '. ' + 'The score is ' + playerScore + '-' + computerScore + '.';
         return loseDeclaration;
     }
     else{
-        playerScore = ++playerScore;
+        playerScore+=1;
         let winDeclaration = 'You win! ' + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) +     ' beats ' + computerSelection + '. ' + 'The score is ' + playerScore + '-' + computerScore + '.';
         return winDeclaration;
     }
   }
-  playRound(playerSelection, computerSelection);
+  /*playRound(playerSelection, computerSelection); This made my code run twice and therefore make the score go up by two*/
   console.log(playRound(playerSelection,computerSelection));  
  }
 } 
