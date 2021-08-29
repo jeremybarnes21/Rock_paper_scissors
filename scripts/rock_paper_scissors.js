@@ -12,7 +12,10 @@ function game() {
 let playerScore = 0;
 let computerScore = 0;
 /*let scoreDeclaration = 'The score is ' + playerScore + '-' + computerScore + '.';*/
-for (let i = 0; i < 6; i++){ 
+// in the future, the while loop below is probably not the best way to run a prompt function... what I may do instead of using the for loop for five rounds is to check for computerScore + playerScore = 5...
+//Also going to test ++i instead of i++. When console.log (i), seems that i starts at 0 even after 1 round. Could also make i start at 1.
+//++i did not seem to help. Now will test i=1
+for (let i = 1; i < 6; i++){ 
     while(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors" || playerInput === null){
         playerInput = prompt("Let's Play Rock, Paper, Scissors!","Enter Rock, Paper, or Scissors");
         if (playerInput == null){
@@ -38,6 +41,7 @@ for (let i = 0; i < 6; i++){
 
  function playRound(playerSelection, computerSelection){
     if(playerSelection == computerSelection){
+        i-=1;
         let drawDeclaration = 'Draw! Play again!';
         return drawDeclaration;
     }
@@ -53,8 +57,19 @@ for (let i = 0; i < 6; i++){
         return winDeclaration;
     }
   }
-  /*playRound(playerSelection, computerSelection); This made my code run twice and therefore make the score go up by two*/
+  /*playRound(playerSelection, computerSelection); 
+  ^This made my code run twice and therefore make the score go up by two*/
   console.log(playRound(playerSelection,computerSelection));  
+  console.log(i);
+  
+  if (i==5 && computerScore>playerScore){
+      let finalResult = 'Sorry, you lost the game! Refresh the page to try again.';
+      console.log(finalResult);
+  }
+  if (i==5 && playerScore>computerScore){
+    let finalResult = 'Congratulations! You won the game! Refresh the page to play again';
+    console.log(finalResult);
+  }
  }
 } 
 game();
