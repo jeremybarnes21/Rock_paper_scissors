@@ -60,15 +60,17 @@ for (let i = 1; i < 6; i++){
   /*playRound(playerSelection, computerSelection); 
   ^This made my code run twice and therefore make the score go up by two*/
   console.log(playRound(playerSelection,computerSelection));  
-  console.log(i);
+
   
-  if (i==5 && computerScore>playerScore){
+  if (computerScore>=3){
       let finalResult = 'Sorry, you lost the game! Refresh the page to try again.';
       console.log(finalResult);
+      return finalResult;
   }
-  if (i==5 && playerScore>computerScore){
+  if (playerScore>=3){
     let finalResult = 'Congratulations! You won the game! Refresh the page to play again';
     console.log(finalResult);
+    return finalResult;
   }
  }
 } 
