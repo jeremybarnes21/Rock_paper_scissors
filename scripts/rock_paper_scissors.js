@@ -15,8 +15,21 @@ let computerScore = 0;
 // in the future, the while loop below is probably not the best way to run a prompt function... what I may do instead of using the for loop for five rounds is to check for computerScore + playerScore = 5...
 //Also going to test ++i instead of i++. When console.log (i), seems that i starts at 0 even after 1 round. Could also make i start at 1.
 //++i did not seem to help. Now will test i=1
+
+//10.13.21: Will need to store playerSelection with button.addEventListener. See OdinProject right before practice section
+//Will have to adjust code below because variable will only be able to be seen within that function scope...
+//May have to make buttons function encompass all of the other functions... Will need function to keep track of score
+//This mayhave to go within the for loop... basically replacing the while loop
+/*const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', ()=> {
+        let playerSelection = button.id; 
+    });
+});*/
+
+//Can get rid of prompt because now there is an eventListener for the button. Can probably get rid of for loop?
 for (let i = 1; i < 6; i++){ 
-    while(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors" || playerInput === null){
+    /*while(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors" || playerInput === null){
         playerInput = prompt("Let's Play Rock, Paper, Scissors!","Enter Rock, Paper, or Scissors");
         if (playerInput == null){
             playerInput = prompt("Let's Play Rock, Paper, Scissors!","Enter Rock, Paper, or Scissors");
@@ -28,7 +41,16 @@ for (let i = 1; i < 6; i++){
         if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
             break;
         }
-    }
+    }*/
+    /*const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+    button.addEventListener('click', ()=> {
+        let playerSelection = button.id; 
+        });
+    });
+    buttons.forEach();*/ 
+    //^This is not working... What is the function name above...? Need to look at arrow function
+    console.log(buttons.forEach());
     function computerPlay(){
         const computerChoices = ["rock","paper","scissors"];
         const random = Math.floor(Math.random() * computerChoices.length); 
