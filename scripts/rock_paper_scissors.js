@@ -9,32 +9,40 @@ let playerSelection;
 
 
 function game() {
-let playerScore = 0;
-let computerScore = 0;
+ let playerScore = 0;
+ let computerScore = 0;
+ 
+ const newDiv = document.querySelector('#butContainer'); //this puts score in same div as buttons... maybe change it?
+ const declaration = document.createElement('div');
+ declaration.classList.add('declaration');
+ declaration.textContent = 'Choose your weapon to begin!';
+ newDiv.appendChild(declaration);
 
-    const buttons = document.querySelectorAll('button');
+ const endGameDiv = document.createElement('div');
+  endGameDiv.classList.add('endGameDiv');
+  endGameDiv.textContent = 'First player to five wins!'
+  newDiv.appendChild(endGameDiv);
+
+ const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click',()=> {
         let playerSelection = button.id; 
         console.log(playerSelection);
-        const newDiv = document.querySelector('#butContainer');
-        const declaration = document.createElement('div');
-        declaration.classList.add('declaration');
-
         function computerPlay(){
             const computerChoices = ["rock","paper","scissors"];
             const random = Math.floor(Math.random() * computerChoices.length); 
             const computerPick = computerChoices[random];
             return computerPick;
-        }
+         }
         computerPlay();
         const computerSelection = computerPlay();
         console.log(computerSelection);
+    
+        
     if(playerSelection == computerSelection){
         
-        let drawDeclaration = 'Draw! Play again!';
+        drawDeclaration = 'Draw! Play again! ' + 'The score is ' + playerScore + '-' + computerScore + '.';
         declaration.textContent = drawDeclaration;
-        newDiv.appendChild(declaration);
         return drawDeclaration;
     }
     else if(playerSelection == 'rock' && computerSelection == 'paper'  || playerSelection =='paper' && computerSelection=='scissors'
@@ -42,33 +50,36 @@ let computerScore = 0;
         computerScore+=1;
         let loseDeclaration = 'You lose! ' + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + ' beats ' + playerSelection + '. ' + 'The score is ' + playerScore + '-' + computerScore + '.';
         declaration.textContent = loseDeclaration;
-        newDiv.appendChild(declaration);
+        
+        return loseDeclaration;
     }
     else{
         playerScore+=1;
         let winDeclaration = 'You win! ' + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) +     ' beats ' + computerSelection + '. ' + 'The score is ' + playerScore + '-' + computerScore + '.';
         declaration.textContent = winDeclaration;
-        newDiv.appendChild(declaration);
+        
         return winDeclaration;
     }
-  });
-  /*playRound(playerSelection, computerSelection); 
-  ^This made my code run twice and therefore make the score go up by two*/
-  // Removing this since the function is anymous console.log(playRound(playerSelection,computerSelection));  
-
+  }); //for eventListener
   
-  if (computerScore>=3){
+
+//For some reason computerScore is not logging in console... Out of scope...? But working with declarations
+//11.2 Still not changing endGameDiv.textContent...so function is not seeing the conditional...?
+
+  if (computerScore>=5){
       let finalResult = 'Sorry, you lost the game! Refresh the page to try again.';
+      endGameDiv.textContent = finalResult;
       console.log(finalResult);
       return finalResult;
   }
-  if (playerScore>=3){
+  if (playerScore>=5){
     let finalResult = 'Congratulations! You won the game! Refresh the page to play again';
+    endGameDiv.textContent = finalResult;
     console.log(finalResult);
     return finalResult;
   }
- });
-//} curcly bracket for for loop at beginning
+ }); //for.Each function... the variables are declared within game function... but inner function can see computerScore...
+//11.2.21 want to try to make seperate function within game() for conditional... so move for.Each to close after eventListener
 }
 game();
 
