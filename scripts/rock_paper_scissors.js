@@ -6,25 +6,38 @@ let playerSelection;
 
 //Return message to user to try again if puts in wrong input
 
-
+let gameTitle = document.querySelector('#gameTitle');
+gameTitle.style.textAlign = 'center';
 
 function game() {
  let playerScore = 0;
  let computerScore = 0;
- 
- const newDiv = document.querySelector('#butContainer'); //this puts score in same div as buttons... maybe change it?
+ //next time call this div something that makes more sense like buttons.
+ const newDiv = document.querySelector('#butContainer'); 
+ newDiv.style.width = '25%';
+ newDiv.style.margin = 'auto';
+ newDiv.style.display = 'flex';
+ newDiv.style.justifyContent = 'center'; //Making buttons and declartions seperate divs helped a lot
+ newDiv.style.justifyContent = 'space-between';
+ newDiv.style.padding = '10px';
+
+
  const declaration = document.createElement('div');
+ declaration.style.textAlign = 'center'; 
+ declaration.style.padding = '10px';
  declaration.classList.add('declaration');
  declaration.textContent = 'Choose your weapon to begin!';
- newDiv.appendChild(declaration);
+ document.body.appendChild(declaration); 
 
  const endGameDiv = document.createElement('div');
   endGameDiv.classList.add('endGameDiv');
   endGameDiv.textContent = 'First player to five wins!'
-  newDiv.appendChild(endGameDiv);
+  endGameDiv.style.textAlign = 'center'; 
+  endGameDiv.style.padding = '10px';
+  document.body.appendChild(endGameDiv);
 
  const buttons = document.querySelectorAll('button'); //buttons acts similar to array
-    buttons.forEach((button) => {
+ buttons.forEach((button) => {
         button.addEventListener('click',()=> {
         let playerSelection = button.id; 
         console.log(playerSelection);
@@ -69,14 +82,14 @@ function game() {
         let finalResult = 'Sorry, you lost the game! Refresh the page to try again.';
         endGameDiv.textContent = finalResult;
         console.log(finalResult);
-        return finalResult;
-        return checkWinner; //so does not keep changing once one player reaches 5
+       // return finalResult;
+        return checkWinner; //so does not keep changing once one player reaches 5... does not work because does not stop function
     }
     if (playerScore>=5){
       let finalResult = 'Congratulations! You won the game! Refresh the page to play again';
       endGameDiv.textContent = finalResult;
       console.log(finalResult);
-      return finalResult;
+      //return finalResult;
       return checkWinner;
     }
   }
