@@ -14,7 +14,7 @@ function game() {
  let computerScore = 0;
  //next time call this div something that makes more sense like buttons.
  const newDiv = document.querySelector('#butContainer'); 
- newDiv.style.width = '25%';
+ newDiv.style.width = '33%';
  newDiv.style.margin = 'auto';
  newDiv.style.display = 'flex';
  newDiv.style.justifyContent = 'center'; //Making buttons and declartions seperate divs helped a lot
@@ -96,20 +96,6 @@ function game() {
   checkWinner(computerScore,playerScore);
   }); //for eventListener
   
-  
-/* 11.2.21 had to add this within the eventListener function... if outside then doesn't check on click... so only loops through it forEach button...great lesson learned.
-  if (computerScore>=5){
-      let finalResult = 'Sorry, you lost the game! Refresh the page to try again.';
-      endGameDiv.textContent = finalResult;
-      console.log(finalResult);
-      return finalResult;
-  }
-  if (playerScore>=5){
-    let finalResult = 'Congratulations! You won the game! Refresh the page to play again';
-    endGameDiv.textContent = finalResult;
-    console.log(finalResult);
-    return finalResult;
-  }*/
  }); //for.Each function... the variables are declared within game function... but inner function can see computerScore...
 
 }
